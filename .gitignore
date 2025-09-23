@@ -1,6 +1,6 @@
 bin/
 obj/
-/.vs
+.vs/
 [Rr]elease/
 [Dd]ebug/
 *.user
