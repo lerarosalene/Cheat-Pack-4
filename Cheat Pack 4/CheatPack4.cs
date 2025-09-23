@@ -174,7 +174,7 @@ public class CheatPack4 : BaseUnityPlugin
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(InventoryWideMap), "UpdatePositions")]
-    private static void UpdatePositionsPrefix(InventoryWideMap __instance)
+    private static void UpdatePositionsPostfix(InventoryWideMap __instance)
     {
         if (cheatCompass.Value)
         {
@@ -215,7 +215,7 @@ public class CheatPack4 : BaseUnityPlugin
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(HeroController), "TickDeliveryItems")]
-    private static bool TickDeliveryItemsPostfix()
+    private static bool TickDeliveryItemsPrefix()
     {
         return !cheatDeliveries.Value;
     }
