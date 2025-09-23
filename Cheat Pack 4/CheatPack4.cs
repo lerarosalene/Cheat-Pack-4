@@ -3,7 +3,6 @@ using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using GlobalEnums;
-using GlobalSettings;
 using HarmonyLib;
 using UnityEngine;
 
