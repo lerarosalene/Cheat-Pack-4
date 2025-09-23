@@ -17,6 +17,7 @@ public class CheatPack4 : BaseUnityPlugin
     private static ConfigEntry<bool> cheatDeathSpool;
     private static ConfigEntry<bool> cheatCompass;
     private static ConfigEntry<bool> cheatMagnet;
+    private static ConfigEntry<bool> cheatDeliveries;
 
     private static FieldInfo gmCurrentSceneObj;
     private static FieldInfo gmShadeMarker;
@@ -51,6 +52,12 @@ public class CheatPack4 : BaseUnityPlugin
         );
         cheatCompass = Config.Bind("General", "cheatCompass", false, "Compass always active");
         cheatMagnet = Config.Bind("General", "cheatMagnet", false, "Magnet always active");
+        cheatDeliveries = Config.Bind(
+            "General",
+            "cheatDeliveries",
+            false,
+            "Taking damage doesn't affect deliveries (also stops timer on Courier's Rasher)"
+        );
 
         gmCurrentSceneObj = typeof(GameMap).GetField(
             "currentSceneObj",
@@ -204,5 +211,25 @@ public class CheatPack4 : BaseUnityPlugin
         {
             __result = (bool)cobHasMagnetTool.GetValue(__instance);
         }
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(HeroController), "TickDeliveryItems")]
+    private static bool TickDeliveryItemsPostfix()
+    {
+        return !cheatDeliveries.Value;
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(
+        typeof(DeliveryQuestItem),
+        "TakeHitForItem",
+        typeof(DeliveryQuestItem.ActiveItem),
+        typeof(bool),
+        typeof(int)
+    )]
+    private static bool TakeHitForItemPrefix()
+    {
+        return !cheatDeliveries.Value;
     }
 }
