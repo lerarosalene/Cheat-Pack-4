@@ -6,7 +6,7 @@ using GlobalEnums;
 using HarmonyLib;
 using UnityEngine;
 
-[BepInPlugin("io.larissarosalene.CheatPack4", "Cheat Pack 4", "3.0.0")]
+[BepInPlugin("io.larissarosalene.CheatPack4", "Cheat Pack 4", "3.0.1")]
 public class CheatPack4 : BaseUnityPlugin
 {
     private static ConfigEntry<bool> cheatHealth;
@@ -30,12 +30,17 @@ public class CheatPack4 : BaseUnityPlugin
     private void Awake()
     {
         cheatHealth = Config.Bind("General", "cheatHealth", false, "Don't lose health on hits");
-        cheatSilk = Config.Bind("General", "cheatSilk", false, "Don't spend silk on skills");
+        cheatSilk = Config.Bind(
+            "General",
+            "cheatSilk",
+            false,
+            "Don't spend silk on skills and binds"
+        );
         cheatShards = Config.Bind(
             "General",
             "cheatShards",
             false,
-            "Don't lose shards on donations/tool crafting"
+            "Don't spend shards on donations/tool crafting"
         );
         cheatMoney = Config.Bind("General", "cheatMoney", false, "Don't spend rosaries in shops");
         cheatDeathMoney = Config.Bind(
