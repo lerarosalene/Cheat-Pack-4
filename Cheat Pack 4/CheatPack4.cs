@@ -6,7 +6,7 @@ using GlobalEnums;
 using HarmonyLib;
 using UnityEngine;
 
-[BepInPlugin("io.larissarosalene.CheatPack4", "Cheat Pack 4", "2.0.0")]
+[BepInPlugin("io.larissarosalene.CheatPack4", "Cheat Pack 4", "3.0.0")]
 public class CheatPack4 : BaseUnityPlugin
 {
     private static ConfigEntry<bool> cheatHealth;
