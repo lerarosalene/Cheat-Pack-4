@@ -39,3 +39,4 @@ packages/
 *.VC.db
 *.VC.VC.opendb
 /foreign-references
+*.zip
