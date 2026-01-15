@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheatPack4.cs" />
+    <Compile Include="LiquidTranspiler.cs" />
     <Compile Include="PatchedDeathEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

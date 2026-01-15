@@ -93,7 +93,10 @@ public class CheatPack4 : BaseUnityPlugin
             BindingFlags.NonPublic | BindingFlags.Instance
         );
 
-        Harmony.CreateAndPatchAll(typeof(CheatPack4), null);
+        var harmony = new Harmony("io.larissarosalene.CheatPack4");
+        harmony.PatchAll(typeof(CheatPack4));
+        harmony.PatchAll(typeof(LiquidTranspiler));
+
         Logger.LogInfo("Cheat Pack 4 loaded");
     }
 
@@ -236,5 +239,10 @@ public class CheatPack4 : BaseUnityPlugin
     private static bool TakeHitForItemPrefix()
     {
         return !cheatDeliveries.Value;
+    }
+
+    public static bool IsShardCheatEnabled()
+    {
+        return cheatShards.Value;
     }
 }
